@@ -1,12 +1,14 @@
 <h1>Lista de pedidos</h1>
 
 @for (pedido of pedidosService.listar(); track pedido.id) {
-    <h2 [style.text-decoration]="pedido.concluido ? 'line-through' : 'none'">{{ pedido.nome }}</h2>
-    <button style="background-color: white;" [hidden]="pedido.aceito" (click)="pedidosService.pedidoAceito(pedido.id)">Aceitar</button>
-    <button style="background-color: blue;" [hidden]="!pedido.aceito || pedido.emPreparo" (click)="pedidosService.pedidoEmPreparo(pedido.id)">Em preparo</button>
-    <button style="background-color: yellow;" [hidden]="!pedido.emPreparo || pedido.emRota" (click)="pedidosService.pedidoSaiuParaEntregua(pedido.id)">Em rota</button>
-    <button style="background-color: green;" [hidden]="!pedido.emRota || pedido.concluido" (click)="pedidosService.marcarEntregue(pedido.id)">Entregue</button>
-    <button style="background-color: orange;" [hidden]="pedido.concluido" (click)="pedidosService.remover(pedido.id)">Cancelar pedido</button>
+    <div class="lista">
+        <h2 [style.text-decoration]="pedido.concluido ? 'line-through' : 'none'">{{ pedido.nome }}</h2>
+        <button style="background-color: white;" [hidden]="pedido.aceito" (click)="pedidosService.pedidoAceito(pedido.id)">Aceitar</button>
+        <button style="background-color: blue;" [hidden]="!pedido.aceito || pedido.emPreparo" (click)="pedidosService.pedidoEmPreparo(pedido.id)">Em preparo</button>
+        <button style="background-color: yellow;" [hidden]="!pedido.emPreparo || pedido.emRota" (click)="pedidosService.pedidoSaiuParaEntregua(pedido.id)">Em rota</button>
+        <button style="background-color: green;" [hidden]="!pedido.emRota || pedido.concluido" (click)="pedidosService.marcarEntregue(pedido.id)">Entregue</button>
+        <button style="background-color: orange;" [hidden]="pedido.concluido" (click)="pedidosService.remover(pedido.id)">Cancelar pedido</button>
+    </div>
 } @empty {
     <p>Nenhum pedido cadastrado</p>
 }
