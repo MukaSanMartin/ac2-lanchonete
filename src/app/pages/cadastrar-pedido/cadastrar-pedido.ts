@@ -13,14 +13,19 @@ import { PedidosService } from '../../services/pedidos-service';
 export class CadastrarPedido {
   constructor(private pedidosService: PedidosService) {}
   
-  nomeDigitado: string = ''
+  nomeDigitado: string = '';
   error: boolean = false;
+  success: boolean = false;
+  successText: string = '';
 
   adicionar () {
     if (this.nomeDigitado.trim() === '') {
+      this.success = false;
       this.error = true;
     } else {
       this.error = false;
+      this.successText = this.nomeDigitado;
+      this.success = true;
 
       const pedido: Pedido = {
         id: this.pedidosService.proximoId,

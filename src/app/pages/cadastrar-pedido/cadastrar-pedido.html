@@ -3,7 +3,8 @@
 <input type="text" [(ngModel)]="nomeDigitado">
 <br>
 <button (click)="adicionar()">Cadastrar</button>
-<p style="color: red;" [hidden]="!error">Insira o nome do pedido</p>
+<p style="color: green;" [hidden]="!success">{{ successText }} cadastrado.</p>
+<p style="color: red;" [hidden]="!error">Insira o nome do pedido.</p>
 
 <br> <br>
 <a routerLink="/lista">Lista de pedidos</a>
